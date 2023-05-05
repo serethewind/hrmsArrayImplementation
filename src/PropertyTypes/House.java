@@ -9,10 +9,12 @@ import lombok.Setter;
 @Setter
 public class House extends Property {
     private double yardSize;
+    private int numberOfFloors;
 
-    public House(String propertyCode, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean occupiedStatus, double yardSize) {
+    public House(String propertyCode, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean occupiedStatus, double yardSize, int numberOfFloors) {
         super(propertyCode, location, numberOfBedrooms, numberOfBathrooms, rentPerMonth, occupiedStatus);
         this.yardSize = yardSize;
+        this.numberOfFloors = numberOfFloors;
     }
 
     @Override
@@ -24,6 +26,7 @@ public class House extends Property {
                 "\nnumberOfBathrooms : " + super.getNumberOfBathrooms() +
                 "\nrentPerMonth : " + super.getRentPerMonth()+
                 "\nyardSize : " + getYardSize() +
+                "\nnumberOfFloors : " + getNumberOfFloors() +
                 "\noccupiedStatus : " + super.isOccupiedStatus() +
                 "}\n\n";
     }

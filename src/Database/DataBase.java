@@ -3,7 +3,8 @@ package Database;
 import BaseClass.Property;
 
 public class DataBase {
-    Property[] properties;
+
+    private Property[] properties;
     int numberOfProperties=0;
 
     public DataBase(int size) {

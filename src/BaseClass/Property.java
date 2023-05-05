@@ -1,8 +1,8 @@
 package BaseClass;
 
 //import Enums.OccupiedStatus;
-import lombok.Getter;
-import lombok.Setter;
+import Enums.PropertyCodeEnum;
+import Utility.PropertyCodeGenerator;
 
 public abstract  class Property {
 
@@ -12,14 +12,17 @@ public abstract  class Property {
     private int numberOfBedrooms;
     private int numberOfBathrooms;
     private double rentPerMonth;
-    private boolean occupiedStatus;
+    private boolean isOccupiedStatus;
 
-    public Property(String propertyCode, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean occupiedStatus) {        this.propertyCode = propertyCode;
+    private PropertyCodeEnum prefix;
+
+    public Property(String propertyCode, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean occupiedStatus) {
+        this.propertyCode = PropertyCodeGenerator.getCode(prefix);
         this.location = location;
         this.numberOfBedrooms = numberOfBedrooms;
         this.numberOfBathrooms = numberOfBathrooms;
         this.rentPerMonth = rentPerMonth;
-        this.occupiedStatus = occupiedStatus;
+        this.isOccupiedStatus = occupiedStatus;
     }
 
     public String getPropertyCode() {
@@ -27,7 +30,7 @@ public abstract  class Property {
     }
 
     public void setPropertyCode(String propertyCode) {
-        this.propertyCode = propertyCode;
+        this.propertyCode = PropertyCodeGenerator.getCode(prefix);
     }
 
     public String getLocation() {
@@ -63,11 +66,11 @@ public abstract  class Property {
     }
 
     public boolean isOccupiedStatus() {
-        return occupiedStatus;
+        return isOccupiedStatus;
     }
 
     public void setOccupiedStatus(boolean occupiedStatus) {
-        this.occupiedStatus = occupiedStatus;
+        this.isOccupiedStatus = occupiedStatus;
     }
 
     @Override
@@ -78,7 +81,7 @@ public abstract  class Property {
                 ", numberOfBedrooms=" + numberOfBedrooms +
                 ", numberOfBathrooms=" + numberOfBathrooms +
                 ", rentPerMonth=" + rentPerMonth +
-                ", occupiedStatus=" + occupiedStatus +
+                ", occupiedStatus=" + isOccupiedStatus +
                 '}';
     }
 }
