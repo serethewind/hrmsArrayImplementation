@@ -3,10 +3,16 @@ package BaseClass;
 //import Enums.OccupiedStatus;
 import Enums.PropertyCodeEnum;
 import Utility.PropertyCodeGenerator;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public abstract  class Property {
 
-
+    private PropertyCodeEnum prefix;
     private String propertyCode;
     private String location;
     private int numberOfBedrooms;
@@ -14,74 +20,35 @@ public abstract  class Property {
     private double rentPerMonth;
     private boolean isOccupiedStatus;
 
-    private PropertyCodeEnum prefix;
 
-    public Property(String propertyCode, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean occupiedStatus) {
+    public Property(PropertyCodeEnum prefix, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean isOccupiedStatus) {
+        this.prefix = prefix;
         this.propertyCode = PropertyCodeGenerator.getCode(prefix);
         this.location = location;
         this.numberOfBedrooms = numberOfBedrooms;
         this.numberOfBathrooms = numberOfBathrooms;
         this.rentPerMonth = rentPerMonth;
-        this.isOccupiedStatus = occupiedStatus;
-    }
-
-    public String getPropertyCode() {
-        return propertyCode;
+        this.isOccupiedStatus = isOccupiedStatus;
     }
 
     public void setPropertyCode(String propertyCode) {
         this.propertyCode = PropertyCodeGenerator.getCode(prefix);
+
     }
 
-    public String getLocation() {
-        return location;
+    public PropertyCodeEnum getPrefix() {
+        return prefix;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getNumberOfBedrooms() {
-        return numberOfBedrooms;
-    }
-
-    public void setNumberOfBedrooms(int numberOfBedrooms) {
-        this.numberOfBedrooms = numberOfBedrooms;
-    }
-
-    public int getNumberOfBathrooms() {
-        return numberOfBathrooms;
-    }
-
-    public void setNumberOfBathrooms(int numberOfBathrooms) {
-        this.numberOfBathrooms = numberOfBathrooms;
-    }
-
-    public double getRentPerMonth() {
-        return rentPerMonth;
-    }
-
-    public void setRentPerMonth(double rentPerMonth) {
-        this.rentPerMonth = rentPerMonth;
-    }
-
-    public boolean isOccupiedStatus() {
-        return isOccupiedStatus;
-    }
-
-    public void setOccupiedStatus(boolean occupiedStatus) {
-        this.isOccupiedStatus = occupiedStatus;
-    }
+    public abstract double rentalIncome();
 
     @Override
     public String toString() {
-        return "Property{" +
-                "propertyCode='" + propertyCode + '\'' +
-                ", location='" + location + '\'' +
-                ", numberOfBedrooms=" + numberOfBedrooms +
-                ", numberOfBathrooms=" + numberOfBathrooms +
-                ", rentPerMonth=" + rentPerMonth +
-                ", occupiedStatus=" + isOccupiedStatus +
-                '}';
+        return "{propertyCode: " + getPropertyCode() + "," + '\n' +
+                "location: " + getLocation() + "," + '\n' +
+                "numberOfBedrooms: " + getNumberOfBedrooms() + "," + '\n' +
+                "numberOfBathrooms: " + getNumberOfBathrooms() + "," + '\n' +
+                "rentPerMonth: " + getRentPerMonth() + "," + '\n' +
+                "isOccupiedStatus: " + isOccupiedStatus();
     }
 }

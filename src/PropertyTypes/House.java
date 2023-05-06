@@ -1,33 +1,43 @@
 package PropertyTypes;
 
 import BaseClass.Property;
-import Enums.OccupiedStatus;
+import Enums.PropertyCodeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class House extends Property {
-    private double yardSize;
-    private int numberOfFloors;
 
-    public House(String propertyCode, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean occupiedStatus, double yardSize, int numberOfFloors) {
-        super(propertyCode, location, numberOfBedrooms, numberOfBathrooms, rentPerMonth, occupiedStatus);
-        this.yardSize = yardSize;
+    private int numberOfFloors;
+    private double yardSize;
+
+    public House(PropertyCodeEnum prefix, String location, int numberOfBedrooms, int numberOfBathrooms, double rentPerMonth, boolean isOccupiedStatus, int numberOfFloors, double yardSize) {
+        super(prefix, location, numberOfBedrooms, numberOfBathrooms, rentPerMonth, isOccupiedStatus);
         this.numberOfFloors = numberOfFloors;
+        this.yardSize = yardSize;
+    }
+
+    //    private PropertyCode propertyCode = PropertyCode.HOU;
+//    private int count = 1;
+//
+//    public String generatePropertyCode() {
+//        String code = "HOU" + String.format("%03d", count++);
+//        return code;
+//    }
+    @Override
+    public double rentalIncome() {
+        if (isOccupiedStatus()) {
+            return getNumberOfFloors() * getNumberOfBedrooms() * getRentPerMonth();
+        }
+        return 0;
     }
 
     @Override
     public String toString() {
-        return "House{" +
-                "propertyCode : " + super.getPropertyCode() +
-                "\nlocation : " + super.getLocation() + '\'' +
-                "\nnumberOfBedrooms : " + super.getNumberOfBedrooms() +
-                "\nnumberOfBathrooms : " + super.getNumberOfBathrooms() +
-                "\nrentPerMonth : " + super.getRentPerMonth()+
-                "\nyardSize : " + getYardSize() +
-                "\nnumberOfFloors : " + getNumberOfFloors() +
-                "\noccupiedStatus : " + super.isOccupiedStatus() +
-                "}\n\n";
+        return super.toString() + "," + '\n' +
+                "numberOfFloors: " + getNumberOfFloors() + "," + '\n' +
+                "yardSize: " + getYardSize() + "}"
+                + '\n' + '\n';
     }
 }

@@ -1,6 +1,5 @@
 package Utility;
 
-import Database.DataBase;
 import Enums.PropertyCodeEnum;
 
 public class PropertyCodeGenerator {
