@@ -24,8 +24,12 @@ public class Main {
         rentalRepository.addProperty(new Condo(PropertyCodeEnum.CON, "Port Harcourt", 6, 8, 56.99, false, 8, "Gym, Pool, Bar"));
         System.out.println(rentalRepository.addProperty(new Condo(PropertyCodeEnum.CON, "Port Harcourt", 6, 8, 56.99, false, 8, "Gym, Pool, Bar")));
         System.out.println(rentalRepository.addProperty(new Condo(PropertyCodeEnum.CON, "Port Harcourt", 6, 8, 56.99, false, 8, "Gym, Pool, Bar")));
+        System.out.println(rentalRepository.removeProperty("HOU001"));
         System.out.println(rentalRepository.addProperty(new Condo(PropertyCodeEnum.CON, "Port Harcourt", 6, 8, 56.99, false, 8, "Gym, Pool, Bar")));
+        System.out.println(rentalRepository.removeProperty("HOU009"));
+        System.out.println(rentalRepository.removeProperty("APA004"));
         System.out.println(rentalRepository.addProperty(new Condo(PropertyCodeEnum.CON, "Port Harcourt", 6, 8, 56.99, false, 8, "Gym, Pool, Bar")));
+
 //        System.out.println(rentalRepository.viewAllProperties());
 //        System.out.println(rentalRepository.updateProperty("APA001", new Apartment(PropertyCodeEnum.APA, "LAGOS", 5, 4, 125.5, false, "1")));
 //        System.out.println(rentalRepository.viewSpecificPropertySubclass(PropertyCodeEnum.HOU));

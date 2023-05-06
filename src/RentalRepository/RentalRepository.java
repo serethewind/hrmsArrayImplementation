@@ -45,19 +45,24 @@ public class RentalRepository {
 
     //Delete implementation of CRUD: Delete Method
     public String removeProperty(String propertyCode) {
-        int count = -1; //cannot initialize count to zero because index of array starts with zero.
+        int count = -1;//cannot initialize count to zero because index of array starts with zero.
+        String response;
         for (int i = 0; i < properties.length; i++) {
             if (properties[i] != null && properties[i].getPropertyCode().equalsIgnoreCase(propertyCode)) {
                 properties[i] = null;
                 count = i;
             }
         }
-        for (int j = count; j < properties.length - 1; j++) {
-            properties[j] = properties[j + 1];
+        if (count != -1) {
+            for (int j = count; j < properties.length - 1; j++) {
+                properties[j] = properties[j + 1];
+            }
+            response = "Successfully deleted property with property code " + propertyCode;
+            numberOfProperties--;
+        } else {
+            response = "Property not found. View all properties to see the right property code";
         }
-        numberOfProperties--;
-
-        return (count == -1) ? "Property not found." : "Successfully deleted property with property code " + propertyCode;
+        return response;
     }
 
     public String viewAllProperties() {
