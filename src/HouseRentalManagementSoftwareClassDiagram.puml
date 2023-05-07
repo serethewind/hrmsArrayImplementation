@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+class Property {
++propertyType: enum
+  +propertyCode: string
+  +location: string
+  +numberOfBathrooms: int
+  +numberOfBedrooms: int
+  +rentPerMonth: double
+  +isOccupiedStatus: boolean
+  +rentalIncome(): double
+}
+
+class Apartment {
+  -floorNumber: int
+ +rentalIncome(): double
+}
+
+class House {
+  -numberOfFloors: int
+  -yardSize: double
+  +rentalIncome(): double
+}
+
+class Condo {
+  -numberOfFloors: integer
+  -amenities: String
+  +rentalIncome(): double
+}
+
+class RentalRepository {
+  -properties: Property[]
+  -numberOfProperties: int
+  +addProperty(Property property): String
+  +updateProperty(String PropertyCode, Property updatedProperty): String
+  +deleteProperty(String PropertyCode): String
+  +viewAllProperties(): String
+  +viewSpecificPropertySubclass(PropertyCodeEnum prefix): String
+  +viewByPropertyCode(String propertyCode): String
+  +viewPropertyOccupiedStatus(boolean status): String
+  +viewPropertyByLocation(String propertyLocation): String
+
++report(PropertyCodeEnum prefix): String
+}
+
+Property <|-- Apartment
+Property <|-- House
+Property <|-- Condo
+
+RentalRepository <--> Property
+
+@enduml

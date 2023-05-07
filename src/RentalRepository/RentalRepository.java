@@ -108,7 +108,7 @@ public class RentalRepository {
 
     }
 
-    public String viewPropertyOccupied(boolean status) {
+    public String viewPropertyOccupiedStatus(boolean status) {
         int count = 0;
         for (Property property : properties) {
             if (property != null && property.isOccupiedStatus() == status) count++;

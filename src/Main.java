@@ -1,8 +1,8 @@
 
 import Enums.PropertyCodeEnum;
-import PropertyTypes.Apartment;
-import PropertyTypes.Condo;
-import PropertyTypes.House;
+import SubClass.Apartment;
+import SubClass.Condo;
+import SubClass.House;
 import RentalRepository.RentalRepository;
 
 public class Main {
