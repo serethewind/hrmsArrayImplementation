@@ -40,7 +40,7 @@ public class RentalRepository {
                 properties[i] = updatedProperty;
             }
         }
-        return count == 0 ? "Property has been updated." : "The specified property code is not present in our property list.";
+        return count != 0 ? "Property has been updated." : "The specified property code is not present in our property list.";
     }
 
     //Delete implementation of CRUD: Delete Method
